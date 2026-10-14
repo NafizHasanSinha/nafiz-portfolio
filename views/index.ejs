@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= data.name %> | Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo"><a href="#">NHS.</a></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#github">GitHub</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <img src="/images/profile.png" alt="<%= data.name %>" class="profile-img" onerror="this.src='https://via.placeholder.com/180'">
+            <h4>Hi there, I'm</h4>
+            <h1><%= data.name %></h1>
+            <p class="tagline"><%= data.title %></p>
+            <p class="location"><i class="fas fa-graduation-cap"></i> CSE Student at SMUCT · Graduation: <%= data.graduation %></p>
+            
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <a href="#projects" class="btn btn-secondary">My Work</a>
+                <a href="#" class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
+            </div>
+
+            <div class="social-links">
+                <a href="<%= data.github %>" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="<%= data.linkedin %>" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="<%= data.facebook %>" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="<%= data.whatsapp %>" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:<%= data.email %>"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About Section -->
+        <section id="about" class="card">
+            <h2>👨‍💻 About Me</h2>
+            <p>I am a passionate <b>Software & Mobile App Developer</b> currently completing my final semester in <b>Computer Science & Engineering (CSE)</b> at <b><%= data.university %></b>. My graduation is expected in <b><%= data.graduation %></b>.</p>
+            <p>I specialize in building full-stack web applications using Node.js, Express.js, PHP/Laravel, and MERN stack, as well as mobile apps with Flutter & Firebase. I enjoy writing clean code and solving real-world problems.</p>
+            <div class="contact-info-grid">
+                <div>📞 <b>Phone:</b> <%= data.phone %></div>
+                <div>✉️ <b>Email:</b> <%= data.email %></div>
+                <div>📍 <b>Location:</b> Dhaka, Bangladesh</div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="card">
+            <h2>🛠️ Skills & Tech Stack</h2>
+            <div class="skills-grid">
+                <% data.skills.forEach(skillGroup => { %>
+                    <div class="skill-box">
+                        <h3><%= skillGroup.category %></h3>
+                        <div class="badges">
+                            <% skillGroup.items.forEach(item => { %>
+                                <span class="badge"><%= item %></span>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="card">
+            <h2>💼 Services</h2>
+            <div class="services-grid">
+                <div class="service-box">
+                    <i class="fas fa-code fa-2x"></i>
+                    <h3>Web Development</h3>
+                    <p>Building responsive web applications using Node.js, Express, React, and Laravel.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fas fa-mobile-alt fa-2x"></i>
+                    <h3>Mobile App Dev</h3>
+                    <p>Cross-platform mobile application development using Flutter & Firebase.</p>
+                </div>
+                <div class="service-box">
+                    <i class="fab fa-wordpress fa-2x"></i>
+                    <h3>WordPress Customization</h3>
+                    <p>Custom WordPress websites, themes, and e-commerce setups.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="card">
+            <h2>🚀 Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Example Project 1 -->
+                <div class="project-box">
+                    <h3>Project Title 1</h3>
+                    <p>MERN stack application with authentication and dynamic features.</p>
+                    <div class="project-links">
+                        <a href="<%= data.github %>" target="_blank" class="btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="#" class="btn-sm"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                <!-- Example Project 2 -->
+                <div class="project-box">
+                    <h3>Flutter Mobile App</h3>
+                    <p>Real-time application built with Flutter and Firebase database.</p>
+                    <div class="project-links">
+                        <a href="<%= data.github %>" target="_blank" class="btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="card">
+            <h2>📚 Education</h2>
+            <div class="education-box">
+                <h3>B.Sc. in Computer Science & Engineering (CSE)</h3>
+                <h4><%= data.university %></h4>
+                <p>Status: Final Semester (Passing Year: January 2027)</p>
+            </div>
+        </section>
+
+        <!-- GitHub Activity Section -->
+        <section id="github" class="card">
+            <h2>📈 GitHub Activity</h2>
+            <div class="github-stats">
+                <img src="https://github-readme-stats.vercel.app/api?username=<%= data.githubUsername %>&show_icons=true&theme=radical&hide_border=true" alt="GitHub Stats" loading="lazy">
+                <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=<%= data.githubUsername %>&layout=compact&theme=radical&hide_border=true" alt="Top Languages" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="card">
+            <h2>📬 Contact / Hire Me</h2>
+            <p>Feel free to reach out for project collaboration, job opportunities, or hiring!</p>
+            <div class="contact-btns">
+                <a href="<%= data.whatsapp %>" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+                <a href="mailto:<%= data.email %>" class="btn btn-primary"><i class="fas fa-envelope"></i> Send Email</a>
+                <a href="tel:<%= data.phone %>" class="btn btn-secondary"><i class="fas fa-phone"></i> Call: <%= data.phone %></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© <%= new Date().getFullYear() %> <%= data.name %>. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
